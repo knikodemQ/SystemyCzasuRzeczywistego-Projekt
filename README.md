@@ -10,7 +10,7 @@ System umożliwia użytkownikowi napełnianie/uzupełnianie wodą butelki wielok
 
 Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ butelki, wyświetla opcje wyboru (typ wody, ilość, stopień gazowania) na ekranie automatu lub aplikacji. Po naciśnięciu przycisku start system napełnia butelkę wodą zgodnie z preferencjami, dodaje CO2 jeśli wybrano wodę gazowaną, informuje o zakończeniu procesu.
 
-#### Data
+#### Data [Data]
 
 - `BottlePresenceData:` flaga obecności butelki
 
@@ -30,7 +30,7 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 
 - `MobileAppCommandData:` dane z aplikacji mobilnej
 
-#### Urządzenia
+#### Urządzenia [Devices]
 
 - `BottlePositionSensor:` Sensor pozycji/położenia butelki
 
@@ -56,33 +56,56 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 
 #### Wątki [Threads]
 
-- `BottleDetectionThread:` sprawdza obecność i pozycję butelki
-
-- `ThreadTypeRecognitionThread:` analizuje gwint
-
-- `FillingControlThread:` kontroluje proces napełniania (zawory, pompa)
-
-- `CO2InjectionThread:` zarządza nasyceniem CO2
-
-- `WaterMonitoringThread:` monitoruje poziom i jakość wody
-
-- `UserInteractionThread:` obsługa ekranu i fizycznych przycisków
-
-- `BluetoothCommThread:` komunikacja z aplikacją mobilną
+- `BottlePositionCheckThread:`	Wykrywanie obecności butelki
   
-#### Procesy
+- `BottleThreadTypeCheckThread:`	Rozpoznawanie typu gwintu butelki
+  
+- `WaterLevelMonitoringThread:`	Pomiar poziomu wody
+  
+- `WaterQualityMonitoringThread:`	Pomiar pH i temperatury wody
+  
+- `FillingControlThread:`	Koordynacja procesu napełniania
+  
+- `StillWaterValveControlThread:`	Obsługa zaworu wody niegazowanej
+  
+- `SparklingWaterValveControlThread:`	Obsługa zaworu wody gazowanej
+  
+- `CO2InjectionThread:`	Obsługa saturatora i nasycanie CO2
+  
+- `WaterPumpControlThread:`	Zarządzanie pompą ciśnienia
+  
+- `LCDDisplayThread:`	Wyświetlanie komunikatów na ekranie
+  
+- `PhysicalButtonHandlerThread:` Obsługa fizycznych przycisków automatu
+  
+- `BluetoothCommunicationThread:`	Komunikacja z aplikacją mobilną przez Bluetooth
+  
+#### Procesy [Processes]
 
 - `FillingManagementProcess:` Odpowiada za realizację procesu napełniania butelki zgodnie z preferencjami.
+
 - `SensorControlProcess:` Zajmuje się zbieraniem i analizą danych z czujników.
+
 - `UserInterfaceProcess:` Zarządza interakcją z użytkownikiem lokalnie i zdalnie.
 
-#### Magistrale
+#### Magistrale [Bus]
 
 - `Magistrala zasilania (PowerBus):` przypisanie źródeł zasilania do komponentów.
+  
 - `Magistrala danych (DataBus):` połączenie procesów, wątków i urządzeń.
 
+#### Procesory [Processors]
+- `MainController:` główny procesor sterujący pracą całego systemu.
 
-#### Wykorzystane komponenty i zaproponowane rozwiązania:
+#### Pamięć [Memory]
+- `SystemMemory:` pamięć operacyjna dla systemu.
+
+#### System [System] 
+- `GardenIrrigationSystem:` kompletny system integrujący wszystkie komponenty.
+
+#### Brudnopis
+
+#### Wykorzystane komponenty i zaproponowane rozwiązania: [luźne przemyślenia, do usunięcia]
 
 1. Sensor pozycji/położenia butelki [device]
 
@@ -133,13 +156,4 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
   - Fizyczne przyciski do obsługi autoamtu.
   - Decyzja o typie uzupełnianej wody i jej ilości.
 
-11. Moduł Bluetooth [device]
-
-  - Obsługa aplikacji mobilnej i zdalnego monitorowania.
-  - Komunikacja użytkownik, automat.
-
-12. Magistrale [bus]
-
-  - Magistrala danych (DataBus) połączenie procesów, wątków i urządzeń.
-  - Magistrala zasilania (PowerBus) przypisanie źródeł zasilania do komponentów.
 
