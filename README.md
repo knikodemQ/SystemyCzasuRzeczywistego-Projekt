@@ -101,59 +101,8 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 - `SystemMemory:` pamięć operacyjna dla systemu.
 
 #### System [System] 
-- `GardenIrrigationSystem:` kompletny system integrujący wszystkie komponenty.
+- `BottleRefillSystem:` kompletny system integrujący wszystkie komponenty.
 
-#### Brudnopis
 
-#### Wykorzystane komponenty i zaproponowane rozwiązania: [luźne przemyślenia, do usunięcia]
-
-1. Sensor pozycji/położenia butelki [device]
-
-  - Wykrywa fizyczną obecność butelki.
-  - Zwraca informacje o poprawnym bądź niepoprawnym położeniu butelki.
-
-2. Czujnik typu gwintu butelki [device]
-
-  - Optyczny sensor sprawdzający rozmiar i typ gwintu butelki.
-  - Dopasowuje złącze gwintowe w zależności od jego typu.
-
-3. Zawór wody gazowanej/Zawór wody niegazowanej [device]
-
-  - Zawór doprowadzający wodę niegazowaną.
-  - Zawór doprowadzający wodę gazowaną w zależności od sprawności saturatora.
-
-4. Pompa ciśnienia utrzymująca przepływ wody [device]
-
-  - Podtrzymuje odpowiednie ciśnienie w systemie wodnym.
-  - Informuje o krytycznych błędach uniemożliwiających działanie systemu.
- 
-5. Sensor poziomu wody w butelce [device]
-
-  - Zapewnia optyczny pomiar poziomu wody w napelnianej butelce.
-  - Informacja o poziomie wpływa na poprawne uzupełnianie butelki.
-
-6. Moduł saturatora CO2 [device]
-
-  - Wstrzykuje CO2 do wody w określonym przez użytkownika stopniu.
-  - Zwraca informacje o ewentualnym wyczerpaniu CO2 w saturatorze.
-    
-7. Sensor jakości wody [device]
-  - Czujniki pH, temperatury.
-  - Informacja dla użytkonika o jakości wody.
-
-8. Moduł sterujący czujników [process]
-
-  - Moduł odpowiadający za zbieranie, zarządzanie danymi i pomiarami z czujników.
-  - Spójność zebranych i przekazanych danych.
-
-9. Wyświetlacz LCD dla autoamtu [device]
-
-  - Wyświetla komunikaty, wybór wody, błędy, status.
-  - Informacja dla użytkownika.
-
-10. Interfejs użytkownika [device]
-
-  - Fizyczne przyciski do obsługi autoamtu.
-  - Decyzja o typie uzupełnianej wody i jej ilości.
 
 
