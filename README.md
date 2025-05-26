@@ -2,6 +2,13 @@
 
 ### Projekt realizowany w ramch przedmiotu systemy czasu rzeczywistego przy użyciu architektury AADL
 
+#### Imię i Nazwisko:
+Krzysztof Nikodem
+
+#### Mail:
+
+knikodem@student.agh.edu.pl
+
 #### Opis projektu:
 
 System umożliwia użytkownikowi napełnianie/uzupełnianie wodą butelki wielokrotnego użytku. Urządzenie rozpoznaje obecność butelki, jej typ, dobiera ilość i rodzaj wody (gazowana/niegazowana), kontroluje jej poziom i jakość przy pomocy sensorów. Automat wyposażony jest w interfejs użytkownika oraz możliwość zdalnego zarządzania przez aplikację mobilną.
