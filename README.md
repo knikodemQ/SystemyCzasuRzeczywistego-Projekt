@@ -110,6 +110,37 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 #### System [System] 
 - `BottleRefillSystem:` kompletny system integrujący wszystkie komponenty.
 
+### Model - diagramy:
 
+### Przprowadzone wybrane analizy osate:
 
+### Litertura:
+
+[Water bottle filling system](https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2025/75102/final/fin_irjmets1746646231.pdf)
+
+Title: AUTOMATED WATER BOTTLE FILLING SYSTEM USING ARDUINO UNO CONTROLLER
+
+Authors: Pravin S. Wankhade, Rohit R. Dabhade, Gopal K. Chavhan,
+Karan P. Ade, Rajdip V. Jadhao
+
+[Liquid filling system](https://www.irjmets.com/uploadedfiles/paper/issue_4_april_2023/35511/final/fin_irjmets1680943442.pdf)
+
+Title:  AUTOMATIC LIQUID FILLING SYSTEM FOR BOTTLE USING PLC
+
+Authors: Prof. Sanaulla Sheikh, Mr. Saurabh S. Kale, Mr. Aditya S. Wakade,
+Mr. Chaitanya R. Chafle, Mr. Prabuddha A. Gedam, Mr. Viraj V. Kolhe
+
+[Smart water dispenser](https://thesai.org/Downloads/Volume15No12/Paper_52-Development_of_a_Smart_Water_Dispenser.pdf)
+
+Title: Development of a Smart Water Dispenser Based onObject Recognition with Raspberry Pi 4
+
+Authors: Dani Ramdani, Puput Dani Prasetyo Adi, Andriana, Tjahjo Adiprabowo,Yuyu Wahyu, Arief Suryadi Satyawan, Sally Octaviana Sari, Zulkarnain, Noor Rohman
+
+[Monitoring system for fluid quality](https://arxiv.org/pdf/2210.06285)
+
+Title: Smart Cup An impedance sensing based fluid intake monitoring system for beverages classification and freshness detection
+
+Authors: MENGXI LIU, SIZHEN BIAN, BO ZHOU, AGNES GRÜNERBL, and PAUL LUKOWICZ, German
+
+[Osate, AADL documentation](https://osate.org)
 
