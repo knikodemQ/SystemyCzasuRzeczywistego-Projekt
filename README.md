@@ -163,6 +163,14 @@ Kompletny system integrujący wszystkie komponenty:
 
 ### Przprowadzone wybrane analizy osate:
 
+### Analiza Wight Total Report:
+
+![](./diagrams/11.jpg)
+
+### Analiza Budget Analysis Report:
+
+![](./diagrams/12.jpg)
+
 ### Litertura:
 
 [Water bottle filling system](https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2025/75102/final/fin_irjmets1746646231.pdf)
