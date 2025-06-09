@@ -5,622 +5,875 @@ public
     With Base_Types;
     with sei;
     
-    -- Typy danych
-    
-    data Timestamp
-        features
-            year: feature Base_Types::Integer_16;
-            month: feature Base_Types::Integer_8;
-            day: feature Base_Types::Integer_8;
-            hour: feature Base_Types::Integer_8;
-            minute: feature Base_Types::Integer_8;
-            second: feature Base_Types::Integer_8;
-    end Timestamp;
-    
-    data implementation Timestamp.impl
-        properties
-            Data_Model::Data_Representation => Struct;
-            Data_Size => 6 Bytes;
-    end Timestamp.impl;
-    
-    data BottlePresenceData
-        properties
-            Data_Model::Data_Representation => Boolean;
-    end BottlePresenceData;
-    
-    data implementation BottlePresenceData.impl
-    end BottlePresenceData.impl;
-    
-    data BottleTypeData
-        properties
-            Data_Model::Data_Representation => Integer;
-            Data_Size => 1 Bytes;
-    end BottleTypeData;
-    
-    data implementation BottleTypeData.impl
-    end BottleTypeData.impl;
-    
-    data WaterLevelData
-        properties
-            Data_Model::Data_Representation => Float;
-            Data_Size => 4 Bytes;
-    end WaterLevelData;
-    
-    data implementation WaterLevelData.impl
-    end WaterLevelData.impl;
-    
-    data WaterQualityData
-        features
-            timestamp: feature Timestamp;
-            sensor_id: feature Base_Types::Integer_16;
-            temperature: feature Base_Types::Float;
-            ph: feature Base_Types::Float;
-            turbidity: feature Base_Types::Float; --Mętność
-            co2: feature Base_Types::Float;
-            conductivity: feature Base_Types::Float; --Przewodniość
-            salinity: feature Base_Types::Float; 
-    end WaterQualityData;
-    
-    data implementation WaterQualityData.impl
-        properties
-            Data_Model::Data_Representation => Struct;
-            Data_Size => 4 Bytes;	
-    end WaterQualityData.impl;
-    
-    data UserPreferencesData
-        features
-            prefered_temperature: feature Base_Types::Float;
-            prefered_co2: feature Base_Types::Float;
-            prefered_ph: feature Base_Types::Float;
-    end UserPreferencesData;
+data Timestamp
+    features
+        year: feature Base_Types::Integer_16;
+        month: feature Base_Types::Integer_8;
+        day: feature Base_Types::Integer_8;
+        hour: feature Base_Types::Integer_8;
+        minute: feature Base_Types::Integer_8;
+        second: feature Base_Types::Integer_8;
+end Timestamp;
 
-    data implementation UserPreferencesData.impl
-        properties
-            Data_Model::Data_Representation => Struct;
-            Data_Size => 12 Bytes;
-    end UserPreferencesData.impl;
-    
-    data CO2LevelData
-        properties
-            Data_Model::Data_Representation => Integer;
-            Data_Size => 1 Bytes;
-    end CO2LevelData;
-    
-    data implementation CO2LevelData.impl
-    end CO2LevelData.impl;
-    
-    data SystemStatusData
-        properties
-            Data_Model::Data_Representation => Integer;
-            Data_Size => 4 Bytes;
-    end SystemStatusData;
-    
-    data implementation SystemStatusData.impl
-    end SystemStatusData.impl;
-    
-    data UICommandData
-        properties
-            Data_Model::Data_Representation => Integer;
-            Data_Size => 4 Bytes;
-    end UICommandData;
-    
-    data implementation UICommandData.impl
-    end UICommandData.impl;
-    
-    data MobileAppCommandData
-        properties
-            Data_Model::Data_Representation => Integer;
-            Data_Size => 4 Bytes;
-    end MobileAppCommandData;
-    
-    data implementation MobileAppCommandData.impl
-    end MobileAppCommandData.impl;
-    
-    data WaterSensorPacket
+data implementation Timestamp.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 6 Bytes;
+end Timestamp.impl;
+
+data BottlePresenceData
+    properties
+        Data_Model::Data_Representation => Boolean;
+end BottlePresenceData;
+
+data implementation BottlePresenceData.impl
+end BottlePresenceData.impl;
+
+data BottleTypeData
+    properties
+        Data_Model::Data_Representation => Integer;
+        Data_Size => 1 Bytes;
+end BottleTypeData;
+
+data implementation BottleTypeData.impl
+end BottleTypeData.impl;
+
+data WaterLevelData
+    properties
+        Data_Model::Data_Representation => Float;
+        Data_Size => 4 Bytes;
+end WaterLevelData;
+
+data implementation WaterLevelData.impl
+end WaterLevelData.impl;
+
+data WaterQualityData
+    features
+        timestamp: feature Timestamp;
+        sensor_id: feature Base_Types::Integer_16;
+        temperature: feature Base_Types::Float;
+        ph: feature Base_Types::Float;
+        turbidity: feature Base_Types::Float; --Mętność
+        co2: feature Base_Types::Float;
+        conductivity: feature Base_Types::Float; --Przewodniość
+        salinity: feature Base_Types::Float; 
+end WaterQualityData;
+
+data implementation WaterQualityData.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 4 Bytes;    
+end WaterQualityData.impl;
+
+data UserPreferencesData
+    features
+        prefered_temperature: feature Base_Types::Float;
+        prefered_co2: feature Base_Types::Float;
+        prefered_ph: feature Base_Types::Float;
+end UserPreferencesData;
+
+data implementation UserPreferencesData.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 12 Bytes;
+end UserPreferencesData.impl;
+
+data CO2LevelData
+    properties
+        Data_Model::Data_Representation => Integer;
+        Data_Size => 1 Bytes;
+end CO2LevelData;
+
+data implementation CO2LevelData.impl
+end CO2LevelData.impl;
+
+data SystemStatusData
+    properties
+        Data_Model::Data_Representation => Integer;
+        Data_Size => 4 Bytes;
+end SystemStatusData;
+
+data implementation SystemStatusData.impl
+end SystemStatusData.impl;
+
+data UICommandData
+    properties
+        Data_Model::Data_Representation => Integer;
+        Data_Size => 4 Bytes;
+end UICommandData;
+
+data implementation UICommandData.impl
+end UICommandData.impl;
+
+data MobileAppCommandData
+    properties
+        Data_Model::Data_Representation => Integer;
+        Data_Size => 4 Bytes;
+end MobileAppCommandData;
+
+data implementation MobileAppCommandData.impl
+end MobileAppCommandData.impl;
+
+data WaterSensorPacket
+features
+    timestamp: feature Timestamp.impl;
+    quality: feature WaterQualityData.impl;
+    level: feature WaterLevelData.impl;
+end WaterSensorPacket;
+
+data implementation WaterSensorPacket.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 8 Bytes; 
+end WaterSensorPacket.impl;
+
+data MonitoringData
     features
         timestamp: feature Timestamp.impl;
-        quality: feature WaterQualityData.impl;
-        level: feature WaterLevelData.impl;
-    end WaterSensorPacket;
+        machine_id: feature Base_Types::Integer_16;
+        status: feature SystemStatusData;
+        error_code: feature Base_Types::Integer_16;
+        usage_count: feature Base_Types::Integer_32;
+end MonitoringData;
 
-    data implementation WaterSensorPacket.impl
-        properties
-            Data_Model::Data_Representation => Struct;
-            Data_Size => 8 Bytes; 
-    end WaterSensorPacket.impl;
-    
-    -- Devices
-    
-    device BottlePositionSensor
-        features
-            presence_out: out data port BottlePresenceData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 20ms;
-            Deadline => 20ms;
-            Compute_Execution_Time => 1ms .. 3ms;
-            SEI::GrossWeight => 0.11kg;
-            SEI::WeightLimit => 0.12kg;	
-    end BottlePositionSensor;
-    
-    device implementation BottlePositionSensor.impl
-    end BottlePositionSensor.impl;
-    
-    device BottleThreadSensor
-        features
-            thread_out: out data port BottleTypeData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 40ms;
-            Deadline => 40ms;
-            Compute_Execution_Time => 2ms .. 4ms;
-            SEI::GrossWeight => 0.15kg;
-            SEI::WeightLimit => 0.22kg;
-    end BottleThreadSensor;
-    
-    device implementation BottleThreadSensor.impl
-    end BottleThreadSensor.impl;
-    
-    device WaterLevelSensor
-        features
-            level_out: out data port WaterLevelData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 20ms;
-            Deadline => 20ms;
-            Compute_Execution_Time => 1ms .. 3ms;
-            SEI::GrossWeight => 0.10kg;
-            SEI::WeightLimit => 0.20kg;
-    end WaterLevelSensor;
-    
-    device implementation WaterLevelSensor.impl
-    end WaterLevelSensor.impl;
-    
-    device WaterQualitySensor
-        features
-            quality_out: out data port WaterQualityData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 100ms;
-            Deadline => 100ms;
-            Compute_Execution_Time => 5ms .. 10ms;
-            SEI::GrossWeight => 0.25kg;
-            SEI::WeightLimit => 0.30kg;    
-    end WaterQualitySensor;
-    
-    device implementation WaterQualitySensor.impl
-    end WaterQualitySensor.impl;
-    
-    device StillWaterValve
-        features
-            open_valve: in event port;
-        properties
-            Dispatch_Protocol => Sporadic;
-            Period => 50ms;
-            Deadline => 50ms;
-            Compute_Execution_Time => 1ms .. 2ms;
-            SEI::GrossWeight => 0.15kg;
-            SEI::WeightLimit => 0.20kg;
-    end StillWaterValve;
-    
-    device implementation StillWaterValve.impl
-    end StillWaterValve.impl;
-    
-    device SparklingWaterValve
-        features
-            open_valve: in event port;
-        properties
-            Dispatch_Protocol => Sporadic;
-            Period => 50ms;
-            Deadline => 50ms;
-            Compute_Execution_Time => 1ms .. 2ms;
-            SEI::GrossWeight => 0.15kg;
-            SEI::WeightLimit => 0.20kg;
-    end SparklingWaterValve;
-    
-    device implementation SparklingWaterValve.impl
-    end SparklingWaterValve.impl;
-    
-    device WaterPump
-        features
-            pump_ctrl: in event port;
-        properties
-            Dispatch_Protocol => Sporadic;
-            Period => 50ms;
-            Deadline => 50ms;
-            Compute_Execution_Time => 1ms .. 2ms;
-            SEI::GrossWeight => 0.30kg;
-            SEI::WeightLimit => 0.35kg;
-    end WaterPump;
-    
-    device implementation WaterPump.impl
-    end WaterPump.impl;
-    
-    device CO2Saturator
-        features
-            inject_co2: in event port;
-        properties
-            Dispatch_Protocol => Sporadic;
-            Period => 50ms;
-            Deadline => 50ms;
-            Compute_Execution_Time => 2ms .. 4ms;
-            SEI::GrossWeight => 0.20kg;
-            SEI::WeightLimit => 0.25kg;
-    end CO2Saturator;
-    
-    device implementation CO2Saturator.impl
-    end CO2Saturator.impl;
-    
-    device LCDDisplay
-        features
-            display_data: in data port SystemStatusData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 40ms;
-            Deadline => 40ms;
-            Compute_Execution_Time => 1ms .. 4ms;
-            SEI::GrossWeight => 0.2kg;
-            SEI::WeightLimit => 0.30kg; 
-    end LCDDisplay;
-    
-    device implementation LCDDisplay.impl
-    end LCDDisplay.impl;
-    
-    device UserInterface
-        features
-            command_out: out data port UICommandData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 200ms;
-            Deadline => 200ms;
-            Compute_Execution_Time => 2ms .. 5ms;
-            SEI::GrossWeight => 0.05kg;
-            SEI::WeightLimit => 0.30kg; 	   
-    end UserInterface;
-    
-    device implementation UserInterface.impl
-    end UserInterface.impl;
-    
-    device BluetoothModule
-        features
-            app_command_out: out data port MobileAppCommandData;
-        properties
-            Dispatch_Protocol => Periodic;
-            Period => 50ms;
-            Deadline => 50ms;
-            Compute_Execution_Time => 1ms .. 2ms;
-            SEI::GrossWeight => 0.2kg;	
-            SEI::WeightLimit => 0.30kg;     
-    end BluetoothModule;
-    
-    device implementation BluetoothModule.impl
-    end BluetoothModule.impl;
-    
-    -- Wątki obsługujące urządzenia i logikę systemu
-    thread BottlePositionCheckThread
-        features
-            presence_in: in data port BottlePresenceData;
-            bottle_status_out: out data port SystemStatusData;
-    end BottlePositionCheckThread;
-    
-    thread implementation BottlePositionCheckThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 2ms .. 5ms;
-    end BottlePositionCheckThread.impl;
-    
-    thread BottleThreadTypeCheckThread
-    features
-        type_in: in data port BottleTypeData;
-        type_status_out: out data port SystemStatusData;
-    end BottleThreadTypeCheckThread;
-    
-    thread implementation BottleThreadTypeCheckThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 2ms .. 5ms;
-    end BottleThreadTypeCheckThread.impl;
-    
-    thread WaterLevelMonitoringThread
-    features
-        level_in: in data port WaterLevelData;
-        level_status_out: out data port SystemStatusData;
-    end WaterLevelMonitoringThread;
-    
-    thread implementation WaterLevelMonitoringThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 2ms .. 5ms;
-    end WaterLevelMonitoringThread.impl;
-    
-    thread WaterQualityMonitoringThread
-        features
-            quality_in: in data port WaterQualityData;
-            quality_status_out: out data port SystemStatusData;
-    end WaterQualityMonitoringThread;
-    
-    thread implementation WaterQualityMonitoringThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 2ms .. 5ms;
-    end WaterQualityMonitoringThread.impl;
-    
-    thread FillingControlThread
-        features
-            preferences_in: in data port UserPreferencesData;
-            bottle_status_in: in data port SystemStatusData;
-            water_level_in: in data port SystemStatusData;
-            water_quality_in: in data port SystemStatusData;
-            system_status_out: out data port SystemStatusData;
-            start_pump: out event port;
-            open_still_valve: out event port;
-            open_sparkling_valve: out event port;
-            co2_injection: out event port;
-    end FillingControlThread;
-    
-    thread implementation FillingControlThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 5ms .. 10ms;
-    end FillingControlThread.impl;
-    
-    thread WaterPumpControlThread
-        features
-            pump_trigger: in event port;
-            pump_control_out: out event port;
-    end WaterPumpControlThread;
-    
-    thread implementation WaterPumpControlThread.impl
-        properties
-          Dispatch_Protocol => Sporadic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end WaterPumpControlThread.impl;
+data implementation MonitoringData.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 16 Bytes;
+end MonitoringData.impl;
 
-    thread StillWaterValveControlThread
-        features
-            valve_trigger: in event port;
-            valve_control_out: out event port;
-    end StillWaterValveControlThread;
+data FilterStatusData
+    features
+        filter_life_remaining: feature Base_Types::Float; -- Percentage remaining
+        last_change_date: feature Timestamp.impl;
+        filter_pressure: feature Base_Types::Float;
+        filter_flow_rate: feature Base_Types::Float;
+end FilterStatusData;
+
+data implementation FilterStatusData.impl
+    properties
+        Data_Model::Data_Representation => Struct;
+        Data_Size => 16 Bytes;
+end FilterStatusData.impl;
+
+data WaterTemperatureData
+    properties
+        Data_Model::Data_Representation => Float;
+        Data_Size => 4 Bytes;
+end WaterTemperatureData;
+
+data implementation WaterTemperatureData.impl
+end WaterTemperatureData.impl;
+
+-- Devices
+
+device BottlePositionSensor
+    features
+        presence_out: out data port BottlePresenceData;
+        sensor_bus_access: requires bus access Sensor_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 20ms;
+        Deadline => 20ms;
+        Compute_Execution_Time => 1ms .. 3ms;
+        SEI::GrossWeight => 0.11kg;
+        SEI::WeightLimit => 0.12kg;    
+end BottlePositionSensor;
+
+device implementation BottlePositionSensor.impl
+end BottlePositionSensor.impl;
+
+device BottleThreadSensor
+    features
+        thread_out: out data port BottleTypeData;
+        sensor_bus_access: requires bus access Sensor_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 40ms;
+        Deadline => 40ms;
+        Compute_Execution_Time => 2ms .. 4ms;
+        SEI::GrossWeight => 0.15kg;
+        SEI::WeightLimit => 0.22kg;
+end BottleThreadSensor;
+
+device implementation BottleThreadSensor.impl
+end BottleThreadSensor.impl;
+
+device WaterLevelSensor
+    features
+        level_out: out data port WaterLevelData;
+        sensor_bus_access: requires bus access Sensor_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 20ms;
+        Deadline => 20ms;
+        Compute_Execution_Time => 1ms .. 3ms;
+        SEI::GrossWeight => 0.10kg;
+        SEI::WeightLimit => 0.20kg;
+end WaterLevelSensor;
+
+device implementation WaterLevelSensor.impl
+end WaterLevelSensor.impl;
+
+device WaterQualitySensor
+    features
+        quality_out: out data port WaterQualityData;
+        sensor_bus_access: requires bus access Sensor_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 100ms;
+        Deadline => 100ms;
+        Compute_Execution_Time => 5ms .. 10ms;
+        SEI::GrossWeight => 0.25kg;
+        SEI::WeightLimit => 0.30kg;    
+end WaterQualitySensor;
+
+device implementation WaterQualitySensor.impl
+end WaterQualitySensor.impl;
+
+device StillWaterValve
+    features
+        open_valve: in event port;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 50ms;
+        Deadline => 50ms;
+        Compute_Execution_Time => 1ms .. 2ms;
+        SEI::GrossWeight => 0.15kg;
+        SEI::WeightLimit => 0.20kg;
+end StillWaterValve;
+
+device implementation StillWaterValve.impl
+end StillWaterValve.impl;
+
+device SparklingWaterValve
+    features
+        open_valve: in event port;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 50ms;
+        Deadline => 50ms;
+        Compute_Execution_Time => 1ms .. 2ms;
+        SEI::GrossWeight => 0.15kg;
+        SEI::WeightLimit => 0.20kg;
+end SparklingWaterValve;
+
+device implementation SparklingWaterValve.impl
+end SparklingWaterValve.impl;
+
+device WaterPump
+    features
+        pump_ctrl: in event port;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 50ms;
+        Deadline => 50ms;
+        Compute_Execution_Time => 1ms .. 2ms;
+        SEI::GrossWeight => 0.30kg;
+        SEI::WeightLimit => 0.35kg;
+end WaterPump;
+
+device implementation WaterPump.impl
+end WaterPump.impl;
+
+device CO2Saturator
+    features
+        inject_co2: in event port;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 50ms;
+        Deadline => 50ms;
+        Compute_Execution_Time => 2ms .. 4ms;
+        SEI::GrossWeight => 0.20kg;
+        SEI::WeightLimit => 0.25kg;
+end CO2Saturator;
+
+device implementation CO2Saturator.impl
+end CO2Saturator.impl;
+
+device LCDDisplay
+    features
+        display_data: in data port SystemStatusData;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 40ms;
+        Deadline => 40ms;
+        Compute_Execution_Time => 1ms .. 4ms;
+        SEI::GrossWeight => 0.2kg;
+        SEI::WeightLimit => 0.30kg; 
+end LCDDisplay;
+
+device implementation LCDDisplay.impl
+end LCDDisplay.impl;
+
+device UserInterface
+    features
+        command_out: out data port UICommandData;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 200ms;
+        Deadline => 200ms;
+        Compute_Execution_Time => 2ms .. 5ms;
+        SEI::GrossWeight => 0.05kg;
+        SEI::WeightLimit => 0.30kg;        
+end UserInterface;
+
+device implementation UserInterface.impl
+end UserInterface.impl;
+
+device BluetoothModule
+    features
+        app_command_in: in data port MobileAppCommandData;
+        monitoring_data_in: in data port MonitoringData;
+        app_command_out: out data port MobileAppCommandData;
+        monitoring_data_out: out data port MonitoringData;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Periodic;
+        Period => 50ms;
+        Deadline => 50ms;
+        Compute_Execution_Time => 1ms .. 2ms;
+        SEI::GrossWeight => 0.2kg;    
+        SEI::WeightLimit => 0.30kg;     
+end BluetoothModule;
+
+device implementation BluetoothModule.impl
+end BluetoothModule.impl;
+
+device WaterFilter
+    features
+        activate_filter: in event port;
+        filter_status_out: out data port FilterStatusData;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 100ms;
+        Deadline => 100ms;
+        Compute_Execution_Time => 2ms .. 5ms;
+        SEI::GrossWeight => 0.5kg;
+        SEI::WeightLimit => 0.6kg;
+end WaterFilter;
+
+device implementation WaterFilter.impl
+end WaterFilter.impl;
+
+device WaterHeater
+    features
+        heat_water: in event port;
+        set_temperature: in data port WaterTemperatureData;
+        current_temperature_out: out data port WaterTemperatureData;
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Dispatch_Protocol => Sporadic;
+        Period => 100ms;
+        Deadline => 100ms;
+        Compute_Execution_Time => 3ms .. 6ms;
+        SEI::GrossWeight => 0.75kg;
+        SEI::WeightLimit => 0.85kg;
+end WaterHeater;
+
+device implementation WaterHeater.impl
+end WaterHeater.impl;
+
+thread BottlePositionCheckThread
+    features
+        presence_in: in data port BottlePresenceData;
+        bottle_status_out: out data port SystemStatusData;
+end BottlePositionCheckThread;
+
+thread implementation BottlePositionCheckThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 2ms .. 5ms;
+end BottlePositionCheckThread.impl;
+
+thread BottleThreadTypeCheckThread
+features
+    type_in: in data port BottleTypeData;
+    type_status_out: out data port SystemStatusData;
+end BottleThreadTypeCheckThread;
+
+thread implementation BottleThreadTypeCheckThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 2ms .. 5ms;
+end BottleThreadTypeCheckThread.impl;
+
+thread WaterLevelMonitoringThread
+features
+    level_in: in data port WaterLevelData;
+    level_status_out: out data port SystemStatusData;
+end WaterLevelMonitoringThread;
+
+thread implementation WaterLevelMonitoringThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 2ms .. 5ms;
+end WaterLevelMonitoringThread.impl;
+
+thread WaterQualityMonitoringThread
+    features
+        quality_in: in data port WaterQualityData;
+        quality_status_out: out data port SystemStatusData;
+end WaterQualityMonitoringThread;
+
+thread implementation WaterQualityMonitoringThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 2ms .. 5ms;
+end WaterQualityMonitoringThread.impl;
+
+thread FillingControlThread
+    features
+        preferences_in: in data port UserPreferencesData;
+        bottle_status_in: in data port SystemStatusData;
+        water_level_in: in data port SystemStatusData;
+        water_quality_in: in data port SystemStatusData;
+        filter_status_in: in data port FilterStatusData;
+        current_water_temp_in: in data port WaterTemperatureData;
+        system_status_out: out data port SystemStatusData;
+        start_pump: out event port;
+        open_still_valve: out event port;
+        open_sparkling_valve: out event port;
+        co2_injection: out event port;
+        activate_filter: out event port;
+        heat_water: out event port;
+        set_temperature: out data port WaterTemperatureData;
+end FillingControlThread;
+
+thread implementation FillingControlThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 5ms .. 10ms;
+end FillingControlThread.impl;
+
+thread WaterPumpControlThread
+    features
+        pump_trigger: in event port;
+        pump_control_out: out event port;
+end WaterPumpControlThread;
+
+thread implementation WaterPumpControlThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end WaterPumpControlThread.impl;
+
+thread StillWaterValveControlThread
+    features
+        valve_trigger: in event port;
+        valve_control_out: out event port;
+end StillWaterValveControlThread;
+
+thread implementation StillWaterValveControlThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end StillWaterValveControlThread.impl;
+
+thread SparklingWaterValveControlThread
+    features
+        valve_trigger: in event port;
+        valve_control_out: out event port;
+end SparklingWaterValveControlThread;
+
+thread implementation SparklingWaterValveControlThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end SparklingWaterValveControlThread.impl;
+
+thread CO2InjectionThread
+    features
+        co2_trigger: in event port;
+        co2_control_out: out event port;
+end CO2InjectionThread;
+
+thread implementation CO2InjectionThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end CO2InjectionThread.impl;
+
+thread LCDDisplayThread
+    features
+        status_in: in data port SystemStatusData;
+        display_out: out data port SystemStatusData;
+end LCDDisplayThread;
+
+thread implementation LCDDisplayThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 2ms .. 4ms;
+end LCDDisplayThread.impl;
+
+thread PhysicalButtonHandlerThread
+    features
+        ui_command_in: in data port UICommandData;
+        preferences_out: out data port UserPreferencesData;
+end PhysicalButtonHandlerThread;
+
+thread implementation PhysicalButtonHandlerThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end PhysicalButtonHandlerThread.impl;
+
+thread BluetoothCommunicationThread
+    features
+        app_command_in: in data port MobileAppCommandData;
+        monitoring_data_in: in data port MonitoringData;
+        app_command_out: out data port MobileAppCommandData;
+        monitoring_data_out: out data port MonitoringData;
+        preferences_out: out data port UserPreferencesData;
+end BluetoothCommunicationThread;
+
+thread implementation BluetoothCommunicationThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end BluetoothCommunicationThread.impl;
+
+thread MonitoringDataCollectionThread
+    features
+        system_status_in: in data port SystemStatusData;
+        filter_status_in: in data port FilterStatusData;
+        water_quality_in: in data port WaterQualityData;
+        monitoring_data_out: out data port MonitoringData;
+end MonitoringDataCollectionThread;
+
+thread implementation MonitoringDataCollectionThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 5000ms; -- Collect data every 5 seconds
+      Deadline => 1000ms;
+      Compute_Execution_Time => 5ms .. 10ms;
+end MonitoringDataCollectionThread.impl;
+
+thread MonitoringDataTransmissionThread
+    features
+        monitoring_data_in: in data port MonitoringData;
+        bt_monitoring_data_out: out data port MonitoringData;
+end MonitoringDataTransmissionThread;
+
+thread implementation MonitoringDataTransmissionThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 60000ms; -- Transmit data every minute
+      Deadline => 10000ms;
+      Compute_Execution_Time => 10ms .. 20ms;
+end MonitoringDataTransmissionThread.impl;
+
+thread WaterFilterControlThread
+    features
+        filter_trigger: in event port;
+        filter_control_out: out event port;
+end WaterFilterControlThread;
+
+thread implementation WaterFilterControlThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end WaterFilterControlThread.impl;
+
+thread WaterHeaterControlThread
+    features
+        heater_trigger: in event port;
+        temperature_in: in data port WaterTemperatureData;
+        heater_control_out: out event port;
+        temperature_out: out data port WaterTemperatureData;
+end WaterHeaterControlThread;
+
+thread implementation WaterHeaterControlThread.impl
+    properties
+      Dispatch_Protocol => Sporadic;
+      Period => 200ms;
+      Deadline => 200ms;
+      Compute_Execution_Time => 1ms .. 3ms;
+end WaterHeaterControlThread.impl;
+
+thread FilterStatusMonitoringThread
+    features
+        filter_status_in: in data port FilterStatusData;
+        filter_status_out: out data port SystemStatusData;
+end FilterStatusMonitoringThread;
+
+thread implementation FilterStatusMonitoringThread.impl
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 5000ms;
+      Deadline => 1000ms;
+      Compute_Execution_Time => 2ms .. 5ms;
+end FilterStatusMonitoringThread.impl;
+
+-- Procesy grupujące wątki
+
+process FillingManagementProcess
+    features
+        user_preferences: in data port UserPreferencesData;
+        bottle_status: in data port SystemStatusData;
+        water_level: in data port SystemStatusData;
+        water_quality: in data port SystemStatusData;
+        filter_status: in data port FilterStatusData;
+        water_temperature: in data port WaterTemperatureData;
+        system_status: out data port SystemStatusData;
+        pump_control: out event port;
+        still_valve_control: out event port;
+        sparkling_valve_control: out event port;
+        co2_control: out event port;
+        filter_control: out event port;
+        heater_control: out event port;
+        set_temperature: out data port WaterTemperatureData;
+end FillingManagementProcess;
+
+process implementation FillingManagementProcess.impl
+    subcomponents
+        filling_control: thread FillingControlThread.impl;
+        pump_ctrl: thread WaterPumpControlThread.impl;
+        valve_still_ctrl: thread StillWaterValveControlThread.impl;
+        valve_spark_ctrl: thread SparklingWaterValveControlThread.impl;
+        co2_inject: thread CO2InjectionThread.impl;
+        filter_ctrl: thread WaterFilterControlThread.impl;
+        heater_ctrl: thread WaterHeaterControlThread.impl;
     
-    thread implementation StillWaterValveControlThread.impl
-        properties
-          Dispatch_Protocol => Sporadic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end StillWaterValveControlThread.impl;
-    
-    thread SparklingWaterValveControlThread
-        features
-            valve_trigger: in event port;
-            valve_control_out: out event port;
-    end SparklingWaterValveControlThread;
-    
-    thread implementation SparklingWaterValveControlThread.impl
-        properties
-          Dispatch_Protocol => Sporadic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end SparklingWaterValveControlThread.impl;
-    
-    thread CO2InjectionThread
-        features
-            co2_trigger: in event port;
-            co2_control_out: out event port;
-    end CO2InjectionThread;
-    
-    thread implementation CO2InjectionThread.impl
-        properties
-          Dispatch_Protocol => Sporadic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end CO2InjectionThread.impl;
-    
-    thread LCDDisplayThread
-        features
-            status_in: in data port SystemStatusData;
-            display_out: out data port SystemStatusData;
-    end LCDDisplayThread;
-    
-    thread implementation LCDDisplayThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 2ms .. 4ms;
-    end LCDDisplayThread.impl;
-    
-    thread PhysicalButtonHandlerThread
-        features
-            ui_command_in: in data port UICommandData;
-            preferences_out: out data port UserPreferencesData;
-    end PhysicalButtonHandlerThread;
-    
-    thread implementation PhysicalButtonHandlerThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end PhysicalButtonHandlerThread.impl;
-    
-    thread BluetoothCommunicationThread
-        features
-            app_command_in: in data port MobileAppCommandData;
-            preferences_out: out data port UserPreferencesData;
-    end BluetoothCommunicationThread;
-    
-    thread implementation BluetoothCommunicationThread.impl
-        properties
-          Dispatch_Protocol => Periodic;
-          Period => 200ms;
-          Deadline => 200ms;
-          Compute_Execution_Time => 1ms .. 3ms;
-    end BluetoothCommunicationThread.impl;
-    
-    -- Procesy grupujące wątki
-    
-    process FillingManagementProcess
-        features
-            user_preferences: in data port UserPreferencesData;
-            bottle_status: in data port SystemStatusData;
-            water_level: in data port SystemStatusData;
-            water_quality: in data port SystemStatusData;
-            system_status: out data port SystemStatusData;
-            pump_control: out event port;
-            still_valve_control: out event port;
-            sparkling_valve_control: out event port;
-            co2_control: out event port;
-    end FillingManagementProcess;
-    
-    process implementation FillingManagementProcess.impl
-        subcomponents
-            filling_control: thread FillingControlThread.impl;
-            pump_ctrl: thread WaterPumpControlThread.impl;
-            valve_still_ctrl: thread StillWaterValveControlThread.impl;
-            valve_spark_ctrl: thread SparklingWaterValveControlThread.impl;
-            co2_inject: thread CO2InjectionThread.impl;
+    connections
+        pref_conn: port user_preferences -> filling_control.preferences_in;
+        bottle_conn: port bottle_status -> filling_control.bottle_status_in;
+        level_conn: port water_level -> filling_control.water_level_in;
+        quality_conn: port water_quality -> filling_control.water_quality_in;
+        filter_status_conn: port filter_status -> filling_control.filter_status_in;
+        water_temp_conn: port water_temperature -> filling_control.current_water_temp_in;
+        status_conn: port filling_control.system_status_out -> system_status;
         
-        connections
-            pref_conn: port user_preferences -> filling_control.preferences_in;
-            bottle_conn: port bottle_status -> filling_control.bottle_status_in;
-            level_conn: port water_level -> filling_control.water_level_in;
-            quality_conn: port water_quality -> filling_control.water_quality_in;
-            status_conn: port filling_control.system_status_out -> system_status;
-            
-            pump_trig: port filling_control.start_pump -> pump_ctrl.pump_trigger;
-            still_trig: port filling_control.open_still_valve -> valve_still_ctrl.valve_trigger;
-            spark_trig: port filling_control.open_sparkling_valve -> valve_spark_ctrl.valve_trigger;
-            co2_trig: port filling_control.co2_injection -> co2_inject.co2_trigger;
-            
-            pump_out: port pump_ctrl.pump_control_out -> pump_control;
-            still_out: port valve_still_ctrl.valve_control_out -> still_valve_control;
-            spark_out: port valve_spark_ctrl.valve_control_out -> sparkling_valve_control;
-            co2_out: port co2_inject.co2_control_out -> co2_control;
-    end FillingManagementProcess.impl;
-    
-    process SensorControlProcess
-        features
-            bottle_presence: in data port BottlePresenceData;
-            bottle_thread: in data port BottleTypeData;
-            water_level: in data port WaterLevelData;
-            water_quality: in data port WaterQualityData;
-            bottle_status: out data port SystemStatusData;
-            thread_status: out data port SystemStatusData;
-            level_status: out data port SystemStatusData;
-            quality_status: out data port SystemStatusData;
-    end SensorControlProcess;
-    
-    process implementation SensorControlProcess.impl
-        subcomponents
-            pos_check: thread BottlePositionCheckThread.impl;
-            type_check: thread BottleThreadTypeCheckThread.impl;
-            lvl_monitor: thread WaterLevelMonitoringThread.impl;
-            qual_monitor: thread WaterQualityMonitoringThread.impl;
+        pump_trig: port filling_control.start_pump -> pump_ctrl.pump_trigger;
+        still_trig: port filling_control.open_still_valve -> valve_still_ctrl.valve_trigger;
+        spark_trig: port filling_control.open_sparkling_valve -> valve_spark_ctrl.valve_trigger;
+        co2_trig: port filling_control.co2_injection -> co2_inject.co2_trigger;
+        filter_trig: port filling_control.activate_filter -> filter_ctrl.filter_trigger;
+        heater_trig: port filling_control.heat_water -> heater_ctrl.heater_trigger;
+        temp_set: port filling_control.set_temperature -> heater_ctrl.temperature_in;
         
-        connections
-            pos_conn: port bottle_presence -> pos_check.presence_in;
-            type_conn: port bottle_thread -> type_check.type_in;
-            lvl_conn: port water_level -> lvl_monitor.level_in;
-            qual_conn: port water_quality -> qual_monitor.quality_in;
-            
-            bottle_out: port pos_check.bottle_status_out -> bottle_status;
-            thread_out: port type_check.type_status_out -> thread_status;
-            level_out: port lvl_monitor.level_status_out -> level_status;
-            quality_out: port qual_monitor.quality_status_out -> quality_status;
-    end SensorControlProcess.impl;
+        pump_out: port pump_ctrl.pump_control_out -> pump_control;
+        still_out: port valve_still_ctrl.valve_control_out -> still_valve_control;
+        spark_out: port valve_spark_ctrl.valve_control_out -> sparkling_valve_control;
+        co2_out: port co2_inject.co2_control_out -> co2_control;
+        filter_out: port filter_ctrl.filter_control_out -> filter_control;
+        heater_out: port heater_ctrl.heater_control_out -> heater_control;
+        temp_out: port heater_ctrl.temperature_out -> set_temperature;
+end FillingManagementProcess.impl;
+
+process SensorControlProcess
+    features
+        bottle_presence: in data port BottlePresenceData;
+        bottle_thread: in data port BottleTypeData;
+        water_level: in data port WaterLevelData;
+        water_quality: in data port WaterQualityData;
+        filter_status: in data port FilterStatusData;
+        bottle_status: out data port SystemStatusData;
+        thread_status: out data port SystemStatusData;
+        level_status: out data port SystemStatusData;
+        quality_status: out data port SystemStatusData;
+        filter_status_out: out data port SystemStatusData;
+end SensorControlProcess;
+
+process implementation SensorControlProcess.impl
+    subcomponents
+        pos_check: thread BottlePositionCheckThread.impl;
+        type_check: thread BottleThreadTypeCheckThread.impl;
+        lvl_monitor: thread WaterLevelMonitoringThread.impl;
+        qual_monitor: thread WaterQualityMonitoringThread.impl;
+        filter_monitor: thread FilterStatusMonitoringThread.impl;
     
-    process UserInterfaceProcess
-        features
-            ui_command: in data port UICommandData;
-            app_command: in data port MobileAppCommandData;
-            system_status: in data port SystemStatusData;
-            display_data: out data port SystemStatusData;
-            user_preferences: out data port UserPreferencesData;
-    end UserInterfaceProcess;
-    
-    process implementation UserInterfaceProcess.impl
-        subcomponents
-            lcd_thread: thread LCDDisplayThread.impl;
-            ui_button_handler: thread PhysicalButtonHandlerThread.impl;
-            bt_comm: thread BluetoothCommunicationThread.impl;
+    connections
+        pos_conn: port bottle_presence -> pos_check.presence_in;
+        type_conn: port bottle_thread -> type_check.type_in;
+        lvl_conn: port water_level -> lvl_monitor.level_in;
+        qual_conn: port water_quality -> qual_monitor.quality_in;
+        filter_conn: port filter_status -> filter_monitor.filter_status_in;
         
-        connections
-            ui_conn: port ui_command -> ui_button_handler.ui_command_in;
-            app_conn: port app_command -> bt_comm.app_command_in;
-            status_conn: port system_status -> lcd_thread.status_in;
-            
-            display_conn: port lcd_thread.display_out -> display_data;
-            ui_pref_conn: port ui_button_handler.preferences_out -> user_preferences;
-            bt_pref_conn: port bt_comm.preferences_out -> user_preferences;
-    end UserInterfaceProcess.impl;
+        bottle_out: port pos_check.bottle_status_out -> bottle_status;
+        thread_out: port type_check.type_status_out -> thread_status;
+        level_out: port lvl_monitor.level_status_out -> level_status;
+        quality_out: port qual_monitor.quality_status_out -> quality_status;
+        filter_out: port filter_monitor.filter_status_out -> filter_status_out;
+end SensorControlProcess.impl;
+
+process UserInterfaceProcess
+    features
+        ui_command: in data port UICommandData;
+        app_command: in data port MobileAppCommandData;
+        monitoring_data: in data port MonitoringData;
+        system_status: in data port SystemStatusData;
+        display_data: out data port SystemStatusData;
+        user_preferences: out data port UserPreferencesData;
+        bt_app_command: out data port MobileAppCommandData;
+        bt_monitoring_data: out data port MonitoringData;
+end UserInterfaceProcess;
+
+process implementation UserInterfaceProcess.impl
+    subcomponents
+        lcd_thread: thread LCDDisplayThread.impl;
+        ui_button_handler: thread PhysicalButtonHandlerThread.impl;
+        bt_comm: thread BluetoothCommunicationThread.impl;
     
-    -- Magistrale
-    
-    bus DataBus
-        properties
-            Transmission_Time => [Fixed => 1ns..2ns; PerByte => 5ns ..6ns;];
-        	Period => 1 ms;
-        	SEI::BandWidthCapacity => 2.0 MBytesps;
-        	SEI::BandWidthBudget => 200.0 KBytesps;
-    end DataBus;
-    
-    bus implementation DataBus.impl
-    end DataBus.impl;
-    
-    bus PowerBus
-        properties
-            Transmission_Time => [Fixed => 1ns..2ns; PerByte => 5ns ..6ns;];
-        	Period => 1 ms;
-        	SEI::BandWidthCapacity => 2.0 MBytesps;
-        	SEI::BandWidthBudget => 200.0 KBytesps;
-    end PowerBus;
-    
-    bus implementation PowerBus.impl
-    end PowerBus.impl;
-    
-    -- Procesor i pamięć
-    processor MainController
-        features
-            data_bus_access: requires bus access DataBus;
-            power_bus_access: requires bus access PowerBus;
-        properties
-            SEI::MIPSCapacity => 1000.0 mips;
-    end MainController;
-    
-    processor implementation MainController.impl
-    end MainController.impl;
-    
-    memory SystemMemory
-        features
-            data_bus_access: requires bus access DataBus;
-        properties
-            Memory_Size => 4 GByte;
-    end SystemMemory;
-    
-    memory implementation SystemMemory.impl
-    end SystemMemory.impl;
-    
-    -- Top-level system
-    system RefillSystem
-    end RefillSystem;
-    
-    system implementation RefillSystem.impl
-        subcomponents
+    connections
+        ui_conn: port ui_command -> ui_button_handler.ui_command_in;
+        app_conn: port app_command -> bt_comm.app_command_in;
+        monitoring_conn: port monitoring_data -> bt_comm.monitoring_data_in;
+        status_conn: port system_status -> lcd_thread.status_in;
+        
+        display_conn: port lcd_thread.display_out -> display_data;
+        ui_pref_conn: port ui_button_handler.preferences_out -> user_preferences;
+        bt_pref_conn: port bt_comm.preferences_out -> user_preferences;
+        bt_app_cmd_conn: port bt_comm.app_command_out -> bt_app_command;
+        bt_monitoring_conn: port bt_comm.monitoring_data_out -> bt_monitoring_data;
+end UserInterfaceProcess.impl;
+
+process MonitoringProcess
+    features
+        system_status_in: in data port SystemStatusData;
+        filter_status_in: in data port FilterStatusData;
+        water_quality_in: in data port WaterQualityData;
+        monitoring_data_out: out data port MonitoringData;
+end MonitoringProcess;
+
+process implementation MonitoringProcess.impl
+    subcomponents
+        data_collection: thread MonitoringDataCollectionThread.impl;
+        data_transmission: thread MonitoringDataTransmissionThread.impl;
+        
+    connections
+        status_to_collection: port system_status_in -> data_collection.system_status_in;
+        filter_to_collection: port filter_status_in -> data_collection.filter_status_in;
+        quality_to_collection: port water_quality_in -> data_collection.water_quality_in;
+        collection_to_transmission: port data_collection.monitoring_data_out -> data_transmission.monitoring_data_in;
+        transmission_to_out: port data_transmission.bt_monitoring_data_out -> monitoring_data_out;
+end MonitoringProcess.impl;
+
+
+bus Main_System_Bus
+    properties
+        Transmission_Time => [Fixed => 1ns..2ns; PerByte => 5ns..6ns;];
+        Period => 1ms;
+        SEI::BandWidthCapacity => 2.0 MBytesps;
+        SEI::BandWidthBudget => 200.0 KBytesps;
+end Main_System_Bus;
+
+bus implementation Main_System_Bus.impl
+end Main_System_Bus.impl;
+
+bus Sensor_Bus
+    properties
+        Transmission_Time => [Fixed => 1ns..2ns; PerByte => 3ns..4ns;];
+        Period => 1ms;
+        SEI::BandWidthCapacity => 1.0 MBytesps;
+        SEI::BandWidthBudget => 150.0 KBytesps;
+end Sensor_Bus;
+
+bus implementation Sensor_Bus.impl
+end Sensor_Bus.impl;
+
+
+processor MainCPU
+    features
+        main_bus_access: requires bus access Main_System_Bus;
+        sensor_bus_access: requires bus access Sensor_Bus;
+    properties
+        SEI::MIPSCapacity => 1000.0 mips;
+end MainCPU;
+
+processor implementation MainCPU.impl
+end MainCPU.impl;
+
+processor MobileAppCPU
+    features
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        SEI::MIPSCapacity => 500.0 mips;
+end MobileAppCPU;
+
+processor implementation MobileAppCPU.impl
+end MobileAppCPU.impl;
+
+memory SystemMemory
+    features
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Memory_Size => 4 GByte;
+end SystemMemory;
+
+memory implementation SystemMemory.impl
+end SystemMemory.impl;
+
+memory MobileAppMemory
+    features
+        main_bus_access: requires bus access Main_System_Bus;
+    properties
+        Memory_Size => 1 GByte;
+end MobileAppMemory;
+
+memory implementation MobileAppMemory.impl
+end MobileAppMemory.impl;
+
+system MobileAppSystem
+    features
+        system_status_in: in data port SystemStatusData;
+        monitoring_data_out: out data port MonitoringData;
+        main_bus_conn: requires bus access Main_System_Bus;
+end MobileAppSystem;
+
+system implementation MobileAppSystem.impl
+    subcomponents
+        monitoring_proc: process MonitoringProcess.impl;
+        app_cpu: processor MobileAppCPU.impl;
+        app_memory: memory MobileAppMemory.impl;
+        
+    connections
+        status_to_monitoring: port system_status_in -> monitoring_proc.system_status_in;
+        monitoring_to_out: port monitoring_proc.monitoring_data_out -> monitoring_data_out;
+        
+    properties
+        Actual_Processor_Binding => (reference(app_cpu)) applies to monitoring_proc;
+        Actual_Memory_Binding => (reference(app_memory)) applies to monitoring_proc;
+end MobileAppSystem.impl;
+
+system RefillSystem
+end RefillSystem;
+
+system implementation RefillSystem.impl
+    subcomponents
         -- Urządzenia
         bottle_pos: device BottlePositionSensor.impl;
         bottle_type: device BottleThreadSensor.impl;
@@ -633,26 +886,32 @@ public
         display: device LCDDisplay.impl;
         ui: device UserInterface.impl;
         bt: device BluetoothModule.impl;
+        water_filter: device WaterFilter.impl;
+        water_heater: device WaterHeater.impl;
     
         -- Procesy
         fill_proc: process FillingManagementProcess.impl;
         sensor_proc: process SensorControlProcess.impl;
         ui_proc: process UserInterfaceProcess.impl;
+        
+        -- MobileAppSystem
+        mobile_app_system: system MobileAppSystem.impl;
     
         -- Procesor i pamięć
-        controller: processor MainController.impl;
-        mem: memory SystemMemory.impl;
+        main_cpu: processor MainCPU.impl;
+        system_memory: memory SystemMemory.impl;
     
         -- Magistrale
-        databus: bus DataBus.impl;
-        power: bus PowerBus.impl;
+        main_bus: bus Main_System_Bus.impl;
+        sensor_bus: bus Sensor_Bus.impl;
     
-        connections
+    connections
         -- Połączenia sensorów z procesem sensorów
         bottle_pos_conn: port bottle_pos.presence_out -> sensor_proc.bottle_presence;
         bottle_type_conn: port bottle_type.thread_out -> sensor_proc.bottle_thread;
         lvl_sensor_conn: port lvl_sensor.level_out -> sensor_proc.water_level;
         qual_sensor_conn: port qual_sensor.quality_out -> sensor_proc.water_quality;
+        filter_status_conn: port water_filter.filter_status_out -> sensor_proc.filter_status;
     
         -- Połączenia UI i BT z procesem UI
         ui_conn: port ui.command_out -> ui_proc.ui_command;
@@ -663,37 +922,67 @@ public
         sensor_to_fill_thread: port sensor_proc.thread_status -> fill_proc.bottle_status;
         sensor_to_fill_level: port sensor_proc.level_status -> fill_proc.water_level;
         sensor_to_fill_quality: port sensor_proc.quality_status -> fill_proc.water_quality;
+        heater_to_fill_temp: port water_heater.current_temperature_out -> fill_proc.water_temperature;
         
         ui_to_fill: port ui_proc.user_preferences -> fill_proc.user_preferences;
         fill_to_ui: port fill_proc.system_status -> ui_proc.system_status;
         ui_to_display: port ui_proc.display_data -> display.display_data;
+        
+        -- Połączenia do MobileAppSystem
+        fill_to_mobile: port fill_proc.system_status -> mobile_app_system.system_status_in;
+
     
         -- Połączenia sterowania urządzeniami
         pump_ctrl_conn: port fill_proc.pump_control -> pump.pump_ctrl;
         still_valve_conn: port fill_proc.still_valve_control -> valve_still.open_valve;
         spark_valve_conn: port fill_proc.sparkling_valve_control -> valve_sparkling.open_valve;
         co2_inject_conn: port fill_proc.co2_control -> saturator.inject_co2;
+        filter_ctrl_conn: port fill_proc.filter_control -> water_filter.activate_filter;
+        heater_ctrl_conn: port fill_proc.heater_control -> water_heater.heat_water;
+        temp_set_conn: port fill_proc.set_temperature -> water_heater.set_temperature;
+        
+        -- Połączenia magistrali
+        main_bus_conn: bus access main_bus -> main_cpu.main_bus_access;
+        sensor_bus_conn: bus access sensor_bus -> main_cpu.sensor_bus_access;
+        memory_bus_conn: bus access main_bus -> system_memory.main_bus_access;
+        
+        bottle_pos_bus: bus access sensor_bus -> bottle_pos.sensor_bus_access;
+        bottle_type_bus: bus access sensor_bus -> bottle_type.sensor_bus_access;
+        lvl_sensor_bus: bus access sensor_bus -> lvl_sensor.sensor_bus_access;
+        qual_sensor_bus: bus access sensor_bus -> qual_sensor.sensor_bus_access;
+        
+        valve_still_bus: bus access main_bus -> valve_still.main_bus_access;
+        valve_sparkling_bus: bus access main_bus -> valve_sparkling.main_bus_access;
+        pump_bus: bus access main_bus -> pump.main_bus_access;
+        saturator_bus: bus access main_bus -> saturator.main_bus_access;
+        display_bus: bus access main_bus -> display.main_bus_access;
+        ui_bus: bus access main_bus -> ui.main_bus_access;
+        bt_bus: bus access main_bus -> bt.main_bus_access;
+        filter_bus: bus access main_bus -> water_filter.main_bus_access;
+        heater_bus: bus access main_bus -> water_heater.main_bus_access;
+        mobile_app_bus: bus access main_bus -> mobile_app_system.main_bus_conn;
     
-        properties
+    properties
         -- Przypisanie procesów do procesora
-        Actual_Processor_Binding => (reference(controller)) applies to
+        Actual_Processor_Binding => (reference(main_cpu)) applies to
             fill_proc, sensor_proc, ui_proc;
     
         -- Przypisanie procesów do pamięci
-        Actual_Memory_Binding => (reference(mem)) applies to
+        Actual_Memory_Binding => (reference(system_memory)) applies to
             fill_proc, sensor_proc, ui_proc;
     
         -- Przypisanie urządzeń do magistrali danych
-        Actual_Connection_Binding => (reference(databus)) applies to
-            bottle_pos_conn, bottle_type_conn, lvl_sensor_conn, qual_sensor_conn,
-            ui_conn, bt_conn, sensor_to_fill_bottle, sensor_to_fill_thread,
-            sensor_to_fill_level, sensor_to_fill_quality, ui_to_fill, fill_to_ui,
-            ui_to_display;
+        Actual_Connection_Binding => (reference(sensor_bus)) applies to
+            bottle_pos_conn, bottle_type_conn, lvl_sensor_conn, qual_sensor_conn, filter_status_conn;
     
-        -- Przypisanie urządzeń wykonawczych do magistrali zasilania
-        Actual_Connection_Binding => (reference(power)) applies to
-            pump_ctrl_conn, still_valve_conn, spark_valve_conn, co2_inject_conn;
+        -- Przypisanie komunikacji do magistrali głównej
+        Actual_Connection_Binding => (reference(main_bus)) applies to
+            ui_conn, bt_conn, sensor_to_fill_bottle, sensor_to_fill_thread,
+            sensor_to_fill_level, sensor_to_fill_quality, 
+            heater_to_fill_temp, ui_to_fill, fill_to_ui, ui_to_display, 
+            fill_to_mobile, pump_ctrl_conn, still_valve_conn, 
+            spark_valve_conn, co2_inject_conn, filter_ctrl_conn, heater_ctrl_conn, 
+            temp_set_conn;
     
     end RefillSystem.impl;
-
 end BottleRefillSystem;
