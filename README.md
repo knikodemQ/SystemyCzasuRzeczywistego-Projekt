@@ -11,104 +11,138 @@ knikodem@student.agh.edu.pl
 
 #### Opis projektu:
 
-System umożliwia użytkownikowi napełnianie/uzupełnianie wodą butelki wielokrotnego użytku. Urządzenie rozpoznaje obecność butelki, jej typ, dobiera ilość i rodzaj wody (gazowana/niegazowana), kontroluje jej poziom i jakość przy pomocy sensorów. Automat wyposażony jest w interfejs użytkownika oraz możliwość zdalnego zarządzania przez aplikację mobilną.
+System umożliwia użytkownikowi napełnianie/uzupełnianie wodą butelki wielokrotnego użytku. Urządzenie rozpoznaje obecność butelki, jej typ, dobiera ilość i rodzaj wody (gazowana/niegazowana), kontroluje jej poziom i jakość przy pomocy sensorów. System wyposażony jest w filtr wody oraz podgrzewacz umożliwiający uzyskanie wody o pożądanej temperaturze. Automat posiada interfejs użytkownika oraz możliwość zdalnego monitorowania i zbierania danych diagnostycznych.
 
 #### Przykładowe wykorzystanie proponowanego systemu przez użytkownika:
 
-Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ butelki, wyświetla opcje wyboru (typ wody, ilość, stopień gazowania) na ekranie automatu lub aplikacji. Po naciśnięciu przycisku start system napełnia butelkę wodą zgodnie z preferencjami, dodaje CO2 jeśli wybrano wodę gazowaną, informuje o zakończeniu procesu.
+Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ butelki, wyświetla opcje wyboru (typ wody, ilość, stopień gazowania, temperatura) na ekranie automatu. Po wprowadzeniu preferencji system filtruje wodę, podgrzewa ją do wybranej temperatury, a następnie napełnia butelkę, dodając CO2 jeśli wybrano wodę gazowaną. System monitoruje cały proces i informuje o jego zakończeniu. Dane o użyciu systemu są zbierane do celów diagnostycznych.
 
-#### Data [Data]
+#### System realizuje następujące funkcje:
 
-- `BottlePresenceData:` flaga obecności butelki
+1. Wykrywanie obecności i typu butelki
+2. Filtrowanie wody wejściowej dla zapewnienia jakości
+3. Podgrzewanie wody do temperatury wybranej przez użytkownika
+4. Napełnianie butelki wodą niegazowaną lub gazowaną (z dodaniem CO2)
+5. Monitorowanie parametrów wody (pH, temperatura, mętność, przewodność)
+6. Monitorowanie stanu filtra wody
+7. Zapewnienie interfejsu użytkownika (wyświetlacz LCD, przyciski)
+8. Zbieranie danych diagnostycznych do celów serwisowych
 
-- `BottleTypeData:` typ gwintu butelki
 
-- `WaterLevelData:` poziom wody
+## Typy Danych [Data]
 
-- `WaterQualityData:` dane z sensorów jakości (pH, temp)
+| Typ Danych | Opis |
+|------------|------|
+| `Timestamp` | Dane czasowe (rok, miesiąc, dzień, godzina, minuta, sekunda) |
+| `BottlePresenceData` | Flaga obecności butelki (typ boolean) |
+| `BottleTypeData` | Typ gwintu butelki (wartość całkowita) |
+| `WaterLevelData` | Poziom wody (wartość zmiennoprzecinkowa) |
+| `WaterQualityData` | Dane z sensorów jakości wody (temperatura, pH, mętność, CO2, przewodność, zasolenie) |
+| `UserPreferencesData` | Preferencje użytkownika (preferowana temperatura, poziom CO2, poziom pH) |
+| `CO2LevelData` | Stan zasobnika CO2 (wartość całkowita) |
+| `SystemStatusData` | Status systemu, błędy, ostrzeżenia (wartość całkowita) |
+| `UICommandData` | Komendy z interfejsu użytkownika (wartość całkowita) |
+| `MobileAppCommandData` | Dane komunikacyjne z aplikacji mobilnej (wartość całkowita) |
+| `WaterSensorPacket` | Pakiet danych z czujników wody (jakość, poziom, znacznik czasowy) |
+| `MonitoringData` | Dane monitorujące (znacznik czasowy, identyfikator maszyny, status, kod błędu, licznik użycia) |
+| `FilterStatusData` | Status filtra wody (pozostały czas życia, data ostatniej wymiany, ciśnienie, przepływ) |
+| `WaterTemperatureData` | Dane o temperaturze wody (wartość zmiennoprzecinkowa) |
 
-- `UserPreferencesData:` wybór użytkownika (gazowana/niegazowana, ilość)
+## Urządzenia [Devices]
 
-- `CO2LevelData:` stan zasobnika CO2
+| Urządzenie | Opis |
+|------------|------|
+| `BottlePositionSensor` | Sensor pozycji/położenia butelki |
+| `BottleThreadSensor` | Czujnik typu gwintu butelki |
+| `WaterLevelSensor` | Sensor poziomu wody w butelce |
+| `WaterQualitySensor` | Sensor jakości wody |
+| `StillWaterValve` | Zawór wody niegazowanej |
+| `SparklingWaterValve` | Zawór wody gazowanej |
+| `WaterPump` | Pompa ciśnienia |
+| `CO2Saturator` | Moduł saturatora CO2 |
+| `LCDDisplay` | Wyświetlacz LCD |
+| `UserInterface` | Fizyczny interfejs użytkownika |
+| `BluetoothModule` | Moduł Bluetooth |
+| `WaterFilter` | Filtr wody |
+| `WaterHeater` | Podgrzewacz wody |
 
-- `SystemStatusData:` błędy, ostrzeżenia, statusy
+## Wątki [Threads]
 
-- `UICommandData:` komendy z interfejsu użytkownika
+| Wątek | Opis |
+|-------|------|
+| `BottlePositionCheckThread` | Wykrywanie obecności butelki |
+| `BottleThreadTypeCheckThread` | Rozpoznawanie typu gwintu butelki |
+| `WaterLevelMonitoringThread` | Pomiar poziomu wody |
+| `WaterQualityMonitoringThread` | Pomiar parametrów jakości wody |
+| `FillingControlThread` | Koordynacja procesu napełniania |
+| `WaterPumpControlThread` | Zarządzanie pompą ciśnienia |
+| `StillWaterValveControlThread` | Obsługa zaworu wody niegazowanej |
+| `SparklingWaterValveControlThread` | Obsługa zaworu wody gazowanej |
+| `CO2InjectionThread` | Obsługa saturatora i nasycanie CO2 |
+| `LCDDisplayThread` | Wyświetlanie komunikatów na ekranie |
+| `PhysicalButtonHandlerThread` | Obsługa fizycznych przycisków automatu |
+| `BluetoothCommunicationThread` | Komunikacja przez Bluetooth |
+| `MonitoringDataCollectionThread` | Zbieranie danych diagnostycznych |
+| `MonitoringDataTransmissionThread` | Przygotowanie danych do transmisji |
+| `WaterFilterControlThread` | Sterowanie filtrem wody |
+| `WaterHeaterControlThread` | Sterowanie podgrzewaczem wody |
+| `FilterStatusMonitoringThread` | Monitorowanie stanu filtra wody |
 
-- `MobileAppCommandData:` dane z aplikacji mobilnej
+## Procesy [Processes]
 
-#### Urządzenia [Devices]
+### FillingManagementProcess
+Zarządza procesem napełniania butelki zgodnie z preferencjami użytkownika, kontrolując:
+- Pompę wody
+- Zawory wody (gazowanej i niegazowanej)
+- Saturator CO2
+- Filtr wody
+- Podgrzewacz wody
 
-- `BottlePositionSensor:` Sensor pozycji/położenia butelki
+### SensorControlProcess
+Zbiera i analizuje dane z czujników:
+- Obecności butelki
+- Typu butelki
+- Poziomu wody
+- Jakości wody
+- Stanu filtra
 
-- `BottleThreadSensor:` Czujnik typu gwintu butelki
+### UserInterfaceProcess
+Zarządza interakcją z użytkownikiem:
+- Wyświetlanie informacji na LCD
+- Obsługuje przycisków fizycznych
 
-- `StillWaterValve:` Zawór wody niegazowanej
+## Procesory [Processors]
 
-- `SparklingWaterValve:` Zawór wody gazowanej
+| Procesor | Opis |
+|----------|------|
+| `MainCPU` | Główny procesor systemu |
+| `MobileAppCPU` | Procesor modułu danych aplikacji |
 
-- `WaterPump:` Pompa ciśnienia
+## Magistrale [Bus]
 
-- `WaterLevelSensor:` Sensor poziomu wody w butelce
+| Magistrala | Opis | Parametry |
+|------------|------|-----------|
+| `Main_System_Bus` | Główna magistrala systemowa | Przepustowość: 2.0 MB/s |
+| `Sensor_Bus` | Dedykowana magistrala sensorów | Przepustowość: 1.0 MB/s |
 
-- `CO2Saturator:` Moduł saturatora CO2
+## Pamięć [Memory]
 
-- `WaterQualitySensor:` Sensor jakości wody (pH, temperatura)
+| Pamięć | Opis | Parametry |
+|--------|------|-----------|
+| `SystemMemory` | Główna pamięć operacyjna | Rozmiar: 4 GB |
+| `MobileAppMemory` | Pamięć podsystemu monitorowania | Rozmiar: 1 GB |
 
-- `LCDDisplay:` Wyświetlacz LCD
+## System [System]
 
-- `UserInterface:` Fizyczny interfejs użytkownika (przyciski)
+### MobileAppSystem
+Podsystem odpowiedzialny za zbieranie i przygotowanie danych diagnostycznych.
 
-- `BluetoothModule:` Moduł Bluetooth
-
-#### Wątki [Threads]
-
-- `BottlePositionCheckThread:`	Wykrywanie obecności butelki
-  
-- `BottleThreadTypeCheckThread:`	Rozpoznawanie typu gwintu butelki
-  
-- `WaterLevelMonitoringThread:`	Pomiar poziomu wody
-  
-- `WaterQualityMonitoringThread:`	Pomiar pH i temperatury wody
-  
-- `FillingControlThread:`	Koordynacja procesu napełniania
-  
-- `StillWaterValveControlThread:`	Obsługa zaworu wody niegazowanej
-  
-- `SparklingWaterValveControlThread:`	Obsługa zaworu wody gazowanej
-  
-- `CO2InjectionThread:`	Obsługa saturatora i nasycanie CO2
-  
-- `WaterPumpControlThread:`	Zarządzanie pompą ciśnienia
-  
-- `LCDDisplayThread:`	Wyświetlanie komunikatów na ekranie
-  
-- `PhysicalButtonHandlerThread:` Obsługa fizycznych przycisków automatu
-  
-- `BluetoothCommunicationThread:`	Komunikacja z aplikacją mobilną przez Bluetooth
-  
-#### Procesy [Processes]
-
-- `FillingManagementProcess:` Odpowiada za realizację procesu napełniania butelki zgodnie z preferencjami.
-
-- `SensorControlProcess:` Zajmuje się zbieraniem i analizą danych z czujników.
-
-- `UserInterfaceProcess:` Zarządza interakcją z użytkownikiem lokalnie i zdalnie.
-
-#### Magistrale [Bus]
-
-- `Magistrala zasilania (PowerBus):` przypisanie źródeł zasilania do komponentów.
-  
-- `Magistrala danych (DataBus):` połączenie procesów, wątków i urządzeń.
-
-#### Procesory [Processors]
-- `MainController:` główny procesor sterujący pracą całego systemu.
-
-#### Pamięć [Memory]
-- `SystemMemory:` pamięć operacyjna dla systemu.
-
-#### System [System] 
-- `BottleRefillSystem:` kompletny system integrujący wszystkie komponenty.
+### RefillSystem
+Kompletny system integrujący wszystkie komponenty:
+- Urządzenia fizyczne
+- Procesy
+- Magistrale
+- Procesory i pamięć
 
 ### Model - diagramy:
 
