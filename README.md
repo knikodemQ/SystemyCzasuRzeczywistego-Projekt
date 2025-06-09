@@ -112,6 +112,21 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 
 ### Model - diagramy:
 
+### Diagram przedstawiający całość systemu:
+![](./diagrams/diagrams/3.jpg)
+
+### Diagram procesu odpowiadającego za zebranie danych z czujników i sensorów:
+![](./diagrams/diagrams/4.jpg)
+
+### Diagram procesu odpowiadajacego za napełnianie butelki:
+![](./diagrams/diagrams/5.jpg)
+
+### Diagram przedstawiający interfejs zbierania danych oraz główną pamięć, procesor i magistrale systemu:
+![](./diagrams/diagrams/1.jpg)
+
+### Diagram przedstawiający podsystem odpowiedzialny za segregację i przesyłanie danych do aplikacji:
+![](./diagrams/diagrams/2.jpg)
+
 ### Przprowadzone wybrane analizy osate:
 
 ### Litertura:
