@@ -36,17 +36,17 @@ Użytkownik podkłada butelkę pod dyszę. System rozpoznaje obecność i typ bu
 | `Timestamp` | Dane czasowe (rok, miesiąc, dzień, godzina, minuta, sekunda) |
 | `BottlePresenceData` | Flaga obecności butelki (typ boolean) |
 | `BottleTypeData` | Typ gwintu butelki (wartość całkowita) |
-| `WaterLevelData` | Poziom wody (wartość zmiennoprzecinkowa) |
+| `WaterLevelData` | Poziom wody (wartość całkowita) |
 | `WaterQualityData` | Dane z sensorów jakości wody (temperatura, pH, mętność, CO2, przewodność, zasolenie) |
-| `UserPreferencesData` | Preferencje użytkownika (preferowana temperatura, poziom CO2, poziom pH) |
+| `UserPreferencesData` | Preferencje użytkownika (preferowana temperatura, poziom CO2) |
 | `CO2LevelData` | Stan zasobnika CO2 (wartość całkowita) |
 | `SystemStatusData` | Status systemu, błędy, ostrzeżenia (wartość całkowita) |
 | `UICommandData` | Komendy z interfejsu użytkownika (wartość całkowita) |
 | `MobileAppCommandData` | Dane komunikacyjne z aplikacji mobilnej (wartość całkowita) |
 | `WaterSensorPacket` | Pakiet danych z czujników wody (jakość, poziom, znacznik czasowy) |
-| `MonitoringData` | Dane monitorujące (znacznik czasowy, identyfikator maszyny, status, kod błędu, licznik użycia) |
-| `FilterStatusData` | Status filtra wody (pozostały czas życia, data ostatniej wymiany, ciśnienie, przepływ) |
-| `WaterTemperatureData` | Dane o temperaturze wody (wartość zmiennoprzecinkowa) |
+| `MonitoringData` | Dane monitorujące (znacznik czasowy, identyfikator maszyny, kod błędu) |
+| `FilterStatusData` | Status filtra wody (data ostatniej wymiany, ciśnienie, przepływ) |
+| `WaterTemperatureData` | Dane o temperaturze wody (wartość całkowita) |
 
 ## Urządzenia [Devices]
 
